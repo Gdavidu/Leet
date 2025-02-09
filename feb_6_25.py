@@ -1,7 +1,2 @@
-# TEST TEXT GIT PLS PICK UP
-print('why the hell does git not pick up these file insertions')
-PICKUP
-HEWLLffgit config user.name
-git config user.email
-tf is gogit --version
-ing on
+print('testing changes by deleting and adding this one file insertion')
+print('hoylcrap python working great')
