@@ -27,3 +27,26 @@ class Solution:
 # Was a little shaky with the logic and syntax of checking the set for a .get value, defaulting it to 0 otherwise, and 
 # just generally adding 1. I reverse engineered it in my brain though and the logic is sound
 # Efficient little boolean outcome for the return looks very clean.
+
+# Two Sum:
+# Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
+# You may assume that every input has exactly one pair of indices i and j that satisfy the condition.
+# Return the answer with the smaller index first.
+
+# Notes going in: Seems like a pointer problem, will definitely need a loop to compare multiple values.
+# Definitely a review problem but a little shaky in memory. The examples all look like sorted lists,
+# Im just going to assume sorted and see if test cases pass
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        start = 0
+        end = len(nums)-1
+        while start < end:
+            fixedTarget = abs(target)
+            sum = abs(nums[start] + nums[end])
+            if sum == fixedTarget:
+                return [start,end]
+            elif sum > fixedTarget:
+                end-=1
+            elif sum < fixedTarget:
+                start+=1
+# Break Notes: Even brute force not working for negative numbers, im gonna sleep on it
