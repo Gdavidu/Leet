@@ -50,3 +50,12 @@ class Solution:
             elif sum < fixedTarget:
                 start+=1
 # Break Notes: Even brute force not working for negative numbers, im gonna sleep on it
+# Second Pass, missing something but close:
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i in range(len(nums)):
+            hit = target-nums[i]
+            if (hit) in nums:
+                if nums.index(hit) == i:
+                    return [i, nums.index(hit,i+1)]
+                return [i, nums.index(hit)]
