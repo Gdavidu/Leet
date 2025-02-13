@@ -85,3 +85,26 @@ class Solution:
                 count[ord(c) - ord('a')] += 1
             res[tuple(count)].append(s)
         return list(res.values())
+
+# Valid Palindrome
+# Given a string s, return true if it is a palindrome, otherwise return false.
+# A palindrome is a string that reads the same forward and backward. It is also case-insensitive and ignores all non-alphanumeric characters.
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        # Seems like a pointer problem, was thinking of just inverting the string
+        # but it seems like itd be more efficient to compare respective indices 
+        # if im cycling thru the swing to invert it.
+        # Create a beginning and end pointer and set the loop conmditional to end once both pointers
+        # ideally == at the middle index
+        start = 0
+        end = len(s)-1
+        while start < end:
+            if s[start] != s[end]:
+                print('hit', s[start], s[end])
+                return False
+            start +=1
+            end -=1
+        return True
+        # First Attempt , did not properly read and now realize I need to filter out non-alphanumerical
+        # characters. Thinking of just finding out which hexacodes are the alphanumerics and checking that
+        # against an undercased s.
