@@ -139,3 +139,19 @@ class Solution:
 # and might just try that bc apparently they were not joshing around when instructions 
 # said alphanumeric bc i really didnt even consider numeric bc who the hell cares about 
 # palindromes w numbers. I gotta pick up tmrw tho its late as hell
+
+# New Approach: filter function w isalnum() then join and compare the list and the reversed listclass Solution:
+    def isPalindrome(self, s: str) -> bool:
+        cleaned = list(filter(lambda char: char.isalnum(), s.lower()))
+        # backwards = cleaned.reverse()
+        # print(backwards)
+        # print(cleaned)
+        if cleaned[::-1] == cleaned:
+            return True
+        return False
+# Notes: Before looking at the optimized solution I think Im at O(logn) bc Im filtering and 
+# depending on how many elements I filter, it could be high in time complexity. I think space complexity
+# is fine; only two new lists stored in memory.
+# Conceptually, forgot how to filter and do lambda functions. Also .reverse() changes the list but 
+# returns none for some dumb reason - apparently to signify they change the original list and to prevent
+# unnecessary copies of the list.
