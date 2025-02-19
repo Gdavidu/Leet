@@ -156,3 +156,13 @@ class Solution:
 # Conceptually, forgot how to filter and do lambda functions. Also .reverse() changes the list but 
 # returns none for some dumb reason - apparently to signify they change the original list and to prevent
 # unnecessary copies of the list.
+
+# Group Anagrams:
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        res = defaultdict(list)
+        for s in strs:
+            sortedS = ''.join(sorted(s))
+            res[sortedS].append(s)
+        return list(res.values())
+# Notes: Subpar sorting O(m*logn) time complexity, m being the # of strings
