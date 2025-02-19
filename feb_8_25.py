@@ -109,31 +109,31 @@ class Solution:
         # characters. Thinking of just finding out which hexacodes are the alphanumerics and checking that
         # against an undercased s. **HEXADECIMAL OR ASCII CODES
         # 2nd Pass:
-        class Solution:
-    def isPalindrome(self, s: str) -> bool:
+class Solution:
+        def isPalindrome(self, s: str) -> bool:
         # Seems like a pointer problem, was thinking of just inverting the string
         # but it seems like itd be more efficient to compare respective indices 
         # if im cycling thru the swing to invert it.
         # Create a beginning and end pointer and set the loop conmditional to end once both pointers
         # ideally == at the middle index
         # Didnt read about alphanumerics...
-        undercase = s.lower()
-        filteredS= ''
-        for i in range(len(s)):
-            if hex(ord('a')) <= hex(ord(undercase[i])) and hex(ord('z')) >= hex(ord(undercase[i])):
-                filteredS += undercase[i]
-        start = 0
-        end = len(filteredS)-1
-        print(filteredS)
-        print(start, end)
+            undercase = s.lower()
+            filteredS= ''
+            for i in range(len(s)):
+                if hex(ord('a')) <= hex(ord(undercase[i])) and hex(ord('z')) >= hex(ord(undercase[i])):
+                    filteredS += undercase[i]
+            start = 0
+            end = len(filteredS)-1
+            print(filteredS)
+            print(start, end)
             # print(filteredS, filteredS[start], filteredS[end])
-        while start < end:
-            if filteredS[start] != filteredS[end]:
+            while start < end:
+                if filteredS[start] != filteredS[end]:
                 # print('hit', s[start], s[end])
-                return False
-            start +=1
-            end -=1
-        return True
+                    return False
+                start +=1
+                end -=1
+            return True
 # Notes: Seems like hexadecimal codes work which is strange because Im pretty sure its
 # just labels and identifies each character w a certain amt of 0s?? Ascii might be betetr 
 # and might just try that bc apparently they were not joshing around when instructions 
@@ -141,6 +141,7 @@ class Solution:
 # palindromes w numbers. I gotta pick up tmrw tho its late as hell
 
 # New Approach: filter function w isalnum() then join and compare the list and the reversed listclass Solution:
+class Solution:
     def isPalindrome(self, s: str) -> bool:
         cleaned = list(filter(lambda char: char.isalnum(), s.lower()))
         # backwards = cleaned.reverse()
