@@ -165,4 +165,30 @@ class Solution:
             sortedS = ''.join(sorted(s))
             res[sortedS].append(s)
         return list(res.values())
-# Notes: Subpar sorting O(m*logn) time complexity, m being the # of strings
+# Notes: Subpar sorting O(m*logn) time complexity, m being the # of strings. The idea is that ur using the sorted string as a key in the hashmap
+# but you are appending the original string only if the sorted string is matching the key. The purpose of the join is to make sure that there is
+# at least an empty string being added to a list and this covers the edge case of if strs only contains an empty string.
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        # Hashmaps of each word would be the best way to determines anagrms
+        # but turning every word into a hashmap would eat too much space
+        # I remember the solution to this was something along the lines of 
+        # creating a 26 length list of 0s and then you take the ord value
+        # of each char, subtract it by the ord val of a to normalize it.
+        # What a solution. Each list would be like a spectrum that only
+        # matches a plaindrome of itself. SO, Id need to loop the original string list and
+        # make a list of 26 0s? Add a word to a list in a list if this list of 26 doesnt match any prev
+        # But that would mean I need to store the previous 26 0 lists and how would I know
+        res = defaultdict(list)
+        
+        for s in strs:
+            count = [0]*26
+            for char in s:
+                count[ord(char) - ord('a')] += 1
+            res[tuple(count)].append(s)
+        return res.values()
+# Notes: Real solution that creates a unique list of 26 0s, with each index representing a letter in the 26 possible letters in the alphabet.
+# Taking the ascii values of each char and subtracting that by the ascii value of a, maps each letter to its correct index in the list of 0s
+# Honestly a beautiful solution but it requires knowing so many niche things, such as that a list of 0s could be used to represent placement 
+# in the alphabet, the [0]*26 that would create a list of 26 0s inside it, the fact that you cant use a list as a key in a hashmap so you turn it
+# into a tuple first, and the defaultdict that can encompass all elements into a list. Crazy. Gotta come look at this problem more times as I go
