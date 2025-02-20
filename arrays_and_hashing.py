@@ -192,3 +192,23 @@ class Solution:
 # Honestly a beautiful solution but it requires knowing so many niche things, such as that a list of 0s could be used to represent placement 
 # in the alphabet, the [0]*26 that would create a list of 26 0s inside it, the fact that you cant use a list as a key in a hashmap so you turn it
 # into a tuple first, and the defaultdict that can encompass all elements into a list. Crazy. Gotta come look at this problem more times as I go
+
+# Top K Most Frequent Elements
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
+
+        for num in nums:
+            count[num] = 1 + count.get(num, 0)
+        for num, cnt in count.items():
+            freq[cnt].append(num)
+        
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            for num in freq[i]:
+                res.append(num)
+                if len(res) == k:
+                    return res
+# Notes: Need to look over this a third time because conceptually I can tell whats going on , looking at the solution but the question itself
+# was hard to discern and I wasnt sure what implications were potential edge cases or helpers. 
