@@ -212,3 +212,36 @@ class Solution:
                     return res
 # Notes: Need to look over this a third time because conceptually I can tell whats going on , looking at the solution but the question itself
 # was hard to discern and I wasnt sure what implications were potential edge cases or helpers. 
+
+# Encode and Decode Strings
+class Solution:
+    def encode(self, strs: List[str]) -> str:
+        if not strs:
+            return ""
+        sizes, res = [], ""
+        for s in strs:
+            sizes.append(len(s))
+        for sz in sizes:
+            res += str(sz)
+            res += ','
+        res += '#'
+        for s in strs:
+            res += s
+        return res
+
+    def decode(self, s: str) -> List[str]:
+        if not s:
+            return []
+        sizes, res, i = [], [], 0
+        while s[i] != '#':
+            cur = ""
+            while s[i] != ',':
+                cur += s[i]
+                i += 1
+            sizes.append(int(cur))
+            i += 1
+        i += 1
+        for sz in sizes:
+            res.append(s[i:i + sz])
+            i += sz
+        return res
